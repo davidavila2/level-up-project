@@ -87,7 +87,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "level-up:build"
+            "browserTarget": "level-up:build",
+            "proxyConfig": "apps/level-up/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -142,6 +143,57 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/level-up-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "level-up-api": {
+      "root": "apps/level-up-api",
+      "sourceRoot": "apps/level-up-api/src",
+      "projectType": "application",
+      "prefix": "level-up-api",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/level-up-api",
+            "main": "apps/level-up-api/src/main.ts",
+            "tsConfig": "apps/level-up-api/tsconfig.app.json",
+            "assets": ["apps/level-up-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/level-up-api/src/environments/environment.ts",
+                  "with": "apps/level-up-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "level-up-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/level-up-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/level-up-api"],
+          "options": {
+            "jestConfig": "apps/level-up-api/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

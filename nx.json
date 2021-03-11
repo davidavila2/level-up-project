@@ -1,34 +1,23 @@
 {
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "level-up",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "level-up": {
-      "tags": []
-    },
-    "level-up-e2e": {
-      "tags": [],
-      "implicitDependencies": ["level-up"]
-    }
+    "level-up": { "tags": [] },
+    "level-up-e2e": { "tags": [], "implicitDependencies": ["level-up"] },
+    "level-up-api": { "tags": [] }
   }
 }
