@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "level-up",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "level-up": {
+      "projectType": "application",
+      "root": "apps/level-up",
+      "sourceRoot": "apps/level-up/src",
+      "prefix": "level-up",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/level-up",
+            "index": "apps/level-up/src/index.html",
+            "main": "apps/level-up/src/main.ts",
+            "polyfills": "apps/level-up/src/polyfills.ts",
+            "tsConfig": "apps/level-up/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/level-up/src/favicon.ico",
+              "apps/level-up/src/assets"
+            ],
+            "styles": ["apps/level-up/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/level-up/src/environments/environment.ts",
+                  "with": "apps/level-up/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "level-up:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "level-up:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "level-up:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/level-up/src/**/*.ts",
+              "apps/level-up/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/level-up"],
+          "options": {
+            "jestConfig": "apps/level-up/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "level-up-e2e": {
+      "root": "apps/level-up-e2e",
+      "sourceRoot": "apps/level-up-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/level-up-e2e/cypress.json",
+            "tsConfig": "apps/level-up-e2e/tsconfig.e2e.json",
+            "devServerTarget": "level-up:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "level-up:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/level-up-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  }
+}
