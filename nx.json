@@ -18,6 +18,9 @@
   "projects": {
     "level-up": { "tags": [] },
     "level-up-e2e": { "tags": [], "implicitDependencies": ["level-up"] },
-    "level-up-api": { "tags": [] }
+    "level-up-api": { "tags": [] },
+    "core-data": { "tags": [] },
+    "material": { "tags": [] },
+    "core-state": { "tags": [] }
   }
 }
