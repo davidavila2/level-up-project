@@ -11,6 +11,13 @@ export class Project {
   status: STATUS
 }
 
+export const emptyProject = {
+  id: null,
+  title: '',
+  description: '',
+  status: null
+}
+
 enum STATUS {
   OPEN = 'Open',
   IN_PROGRESS = 'In Progress',

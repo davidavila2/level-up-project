@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { ProjectsService } from '@level-up/core-data';
 
 @Component({
   selector: 'level-up-root',
@@ -8,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'level-up';
-
-  // constructor() {}
 }
