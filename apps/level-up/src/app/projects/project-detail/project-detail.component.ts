@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Project } from '@level-up/core-data';
+import { FormGroup } from '@angular/forms';
+
+import { Project, STATUS } from '@level-up/core-data';
 
 @Component({
   selector: 'level-up-project-detail',
@@ -7,13 +9,14 @@ import { Project } from '@level-up/core-data';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent {
-  currentProject: Project;
-  originalTitle: string;
+  selectedProject: Project;
+  projectStatuses = STATUS;
+
+  @Input() form: FormGroup;
+  @Input() set project(value) {
+    this.selectedProject = Object.assign({}, value)
+  }
+
   @Output() saved = new EventEmitter();
   @Output() cancelled = new EventEmitter();
-
-  @Input() set project(value) {
-    if (value) { this.originalTitle = value.title; }
-    this.currentProject = Object.assign({}, value);
-  }
 }

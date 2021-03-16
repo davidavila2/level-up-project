@@ -14,9 +14,9 @@
           {{project.description}}
         </p>
         <button mat-icon-button (click)="deleted.emit(project); $event.stopImmediatePropagation()">
-          <mat-icon>close</mat-icon>
+          <mat-icon>delete</mat-icon>
         </button>
-        <button mat-icon-button (click)="$event.stopImmediatePropagation()" [routerLink]="project.id">
+        <button mat-icon-button (click)="$event.stopImmediatePropagation()" routerLink="/project/{{project.id}}">
           <mat-icon>more_vert</mat-icon>
         </button>
       </mat-list-item>

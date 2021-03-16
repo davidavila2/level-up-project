@@ -1,25 +1,39 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>
-      <h1>
-        <span *ngIf="currentProject.id; else elseBlock">{{originalTitle}}</span>
-        <ng-template #elseBlock>Select an Project</ng-template>
-      </h1>
-    </mat-card-title>
+    <mat-card-title *ngIf="!selectedProject.id; else update">Create a Project</mat-card-title>
+    <ng-template #update>
+      <mat-card-title>Update {{selectedProject.title}} Project</mat-card-title>
+    </ng-template>
   </mat-card-header>
-  <form (submit)="saved.emit(currentProject)">
-    <mat-card-content>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Title" [(ngModel)]="currentProject.title" type="text" name="title">
+  <form [formGroup]="form" (submit)="saved.emit(form.value)">
+    <mat-card-content class="mb-0">
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" placeholder="Type your title here" formControlName="title" />
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <textarea matInput placeholder="Description" [(ngModel)]="currentProject.description" type="text"
-          name="description"></textarea>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput type="text" placeholder="Type your description here" formControlName="description">
+        </textarea>
       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" name="status">
+          <mat-option *ngFor="let status of projectStatuses" [value]="status.value">
+            {{status.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('status').hasError('required')">Required Field</mat-error>
+      </mat-form-field>
+
     </mat-card-content>
-    <mat-card-actions>
-      <button type="submit" mat-button color="primary">Save</button>
-      <button type="button" mat-button (click)="cancelled.emit(currentProject)">Cancel</button>
+    <mat-card-actions class="d-flex flex-row-reverse mb-0">
+      <button mat-button type="submit" color="primary">Submit</button>
+      <button mat-button type="reset" color="warn" (click)="cancelled.emit()">Cancel</button>
     </mat-card-actions>
   </form>
+
 </mat-card>

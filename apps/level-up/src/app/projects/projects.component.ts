@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { emptyProject, Project } from '@level-up/core-data';
 import { Observable } from 'rxjs';
 import { ProjectFacade } from '@level-up/core-state';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'level-up-projects',
@@ -10,25 +11,28 @@ import { ProjectFacade } from '@level-up/core-state';
 })
 export class ProjectsComponent implements OnInit {
   projects$: Observable<Project[]> = this.projectsFacade.all$;
-  selectedProject: Project;
+  project: Project;
+  form: FormGroup;
 
-  constructor(private projectsFacade: ProjectFacade) { }
+  constructor(
+    public projectsFacade: ProjectFacade,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.projectsFacade.loadAll(Project);
+    this.initForm();
     this.resetProject();
   }
 
   selectProject(project: Project) {
-    this.projectsFacade.select(project);
+    this.project = project;
+    this.form.patchValue(project);
   }
 
   resetProject() {
-    this.selectProject(emptyProject);
-  }
-
-  cancel() {
-    this.resetProject();
+    this.form.reset();
+    this.selectProject(emptyProject)
   }
 
   saveProject(project: Project) {
@@ -44,11 +48,19 @@ export class ProjectsComponent implements OnInit {
   }
 
   createProject(project: Project) {
-    console.log(project, 'due');
     this.projectsFacade.create(project);
   }
 
   deleteProject(project) {
     this.projectsFacade.delete(project);
+  }
+
+  private initForm() {
+    this.form = this.formBuilder.group({
+      id: null,
+      title: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+      status: ['', Validators.compose([Validators.required])]
+    });
   }
 }

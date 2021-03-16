@@ -1,1 +1,22 @@
-<p>project-item works!</p>
+<button mat-icon-button type="button" color="primary" class="mt-4 ml-5" (click)="location.back()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<div *ngIf="(project$ | async) as project" class="container d-flex justify-content-center mt-5">
+  <div class="w-50">
+    <mat-card class="d-flex justify-content-center flex-column">
+      <mat-card-header class="d-flex align-self-center">
+        <mat-card-title>{{project.title | titlecase}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="text-center">
+          <strong>Description: </strong>
+          {{project.description}}
+        </div>
+        <p class="text-center">
+          <strong>Status: </strong>
+          {{project.status}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

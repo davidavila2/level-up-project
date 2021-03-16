@@ -4,8 +4,10 @@ import { Project } from '@level-up/core-data';
 export const {
   initialState: initialProjectState,
   selectors: {
-    selectAll: allProjects
+    selectAll: allProjects,
+    selectCurrentEntity: selectCurrent
   },
+  entityState,
   facade: ProjectFacadeBase
 } = buildState(Project);
 
