@@ -1,4 +1,4 @@
-<button mat-icon-button type="button" color="primary" class="mt-4 ml-5" (click)="location.back()">
+<button mat-icon-button type="button" color="primary" class="mt-4 ml-5" [routerLink]="'/projects'">
   <mat-icon>arrow_back</mat-icon>
 </button>
 <div *ngIf="(project$ | async) as project" class="container d-flex justify-content-center mt-5">
