@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { emptyProject, Project } from '@level-up/core-data';
+import { NotifyService, Project } from '@level-up/core-data';
 import { Observable } from 'rxjs';
 import { ProjectFacade } from '@level-up/core-state';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -10,29 +10,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  projects$: Observable<Project[]> = this.projectsFacade.all$;
-  project: Project;
+  projects$: Observable<Project[]> = this.projectsFacade.all$
   form: FormGroup;
 
   constructor(
     public projectsFacade: ProjectFacade,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private notify: NotifyService
   ) { }
 
   ngOnInit() {
     this.projectsFacade.loadAll(Project);
     this.initForm();
     this.resetProject();
+    this.projectsFacade.mutations$.subscribe(() => this.resetProject())
   }
 
   selectProject(project: Project) {
-    this.project = project;
+    this.projectsFacade.select(project);
     this.form.patchValue(project);
   }
 
   resetProject() {
     this.form.reset();
-    this.selectProject(emptyProject)
+    this.projectsFacade.deselect();
   }
 
   saveProject(project: Project) {
@@ -44,6 +45,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateProject(project: Project) {
+    this.notify.notification(`You have updated ${project.title}`);
     this.projectsFacade.update(project);
   }
 

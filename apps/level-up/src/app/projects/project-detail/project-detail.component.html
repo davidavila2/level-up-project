@@ -5,21 +5,21 @@
       <mat-card-title>Update {{selectedProject.title}} Project</mat-card-title>
     </ng-template>
   </mat-card-header>
-  <form [formGroup]="form" (submit)="saved.emit(form.value)">
+  <form [formGroup]="form" #formDirective="ngForm" (submit)="saveForm(formDirective)">
     <mat-card-content class="mb-0">
 
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Title</mat-label>
-        <input matInput type="text" placeholder="Type your title here" formControlName="title" />
+        <input matInput type="text" formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Description</mat-label>
-        <textarea matInput type="text" placeholder="Type your description here" formControlName="description">
+        <textarea matInput type="text" formControlName="description">
         </textarea>
       </mat-form-field>
 
-      <mat-form-field class="full-width">
+      <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
         <mat-select formControlName="status" name="status">
           <mat-option *ngFor="let status of projectStatuses" [value]="status.value">
@@ -35,5 +35,4 @@
       <button mat-button type="reset" color="warn" (click)="cancelled.emit()">Cancel</button>
     </mat-card-actions>
   </form>
-
 </mat-card>

@@ -8,7 +8,12 @@ export const {
     selectCurrentEntity: selectCurrent
   },
   entityState,
-  facade: ProjectFacadeBase
+  facade: ProjectFacadeBase,
+  actions: {
+    createSuccess: createProjectSuccess,
+    deleteSuccess: deleteProjectSuccess,
+    updateSuccess: updateProjectSuccess
+  }
 } = buildState(Project);
 
 export function projectReducer(state = initialProjectState): IEntityState<Project> {

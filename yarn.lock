@@ -1341,10 +1341,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@briebug/ngrx-auto-entity@~0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@briebug/ngrx-auto-entity/-/ngrx-auto-entity-0.5.0.tgz#2703b193ecf1b6720abdcb1e91501b8f191e431d"
-  integrity sha512-nP8nBG2d0chdrZVxd56lioTaud4JtETwj2eGR7HFNDtkHDmiGjDPeXX6Fi/V5sBp8ENOSPjdL/tpZZz3DKAPOA==
+"@briebug/ngrx-auto-entity@0.6.0-beta.1":
+  version "0.6.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@briebug/ngrx-auto-entity/-/ngrx-auto-entity-0.6.0-beta.1.tgz#d61ee8f42ebf28f7bac2fc208a562cff856e0f09"
+  integrity sha512-yKrvszFbmUMvLb870aALsXhVAfY3nQzX8/S4T03F3koZvvTd25t/AQIKLSzkE9MTljMhiI6qkjA2PpoYnZ7Ycw==
   dependencies:
     tslib "^1.9.0"
 
@@ -1732,6 +1732,13 @@
   version "8.6.1"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-8.6.1.tgz#6038a5e9cc3db27fdea4cfbcc6e2ae63721e8a26"
   integrity sha512-nvokfJ+LXez3DuAVSWW4w/eMrjPoSpzyHSToIVbDTVIF4JZ3g8fKdi9aHYAeXy2MDR1BaV7zMTmM9w6J0TDZtw==
+
+"@ngrx/router-store@^11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-11.0.1.tgz#3bd47263e2fc29e9811c5466df34d11c0ddc9af5"
+  integrity sha512-ZXx1qxRy1uP6iZ721uPTmO/VYYqKAj0WaXJsMOX/eTK0WkOWiCvQ9y6oCvyR6YyyIY2cCMk1QicB1+xRotU8Rg==
+  dependencies:
+    tslib "^2.0.0"
 
 "@ngrx/store-devtools@^11.0.1":
   version "11.0.1"

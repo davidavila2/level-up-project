@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 
 import { Project, STATUS } from '@level-up/core-data';
 
@@ -19,4 +19,10 @@ export class ProjectDetailComponent {
 
   @Output() saved = new EventEmitter();
   @Output() cancelled = new EventEmitter();
+
+
+  saveForm(formDirective: NgForm) {
+    this.saved.emit(this.form.value);
+    formDirective.resetForm();
+  }
 }
