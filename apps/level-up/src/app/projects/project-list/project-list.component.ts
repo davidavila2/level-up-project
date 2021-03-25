@@ -8,7 +8,7 @@ import { Project } from '@level-up/core-data'
 })
 export class ProjectListComponent {
   @Input() projects: Project[];
-  @Input() readonly = false;
+
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
 }

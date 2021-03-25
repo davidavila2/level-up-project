@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotifyService, Project } from '@level-up/core-data';
+import { Project } from '@level-up/core-data';
 import { Observable } from 'rxjs';
 import { ProjectFacade } from '@level-up/core-state';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -15,49 +15,47 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     public projectsFacade: ProjectFacade,
-    private formBuilder: FormBuilder,
-    private notify: NotifyService
+    private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.projectsFacade.loadAll(Project);
     this.initForm();
     this.resetProject();
     this.projectsFacade.mutations$.subscribe(() => this.resetProject())
   }
 
-  selectProject(project: Project) {
+  selectProject(project: Project): void {
     this.projectsFacade.select(project);
     this.form.patchValue(project);
   }
 
-  resetProject() {
-    this.form.reset();
+  resetProject(): void {
     this.projectsFacade.deselect();
+    this.form.reset();
+
+    Object.keys(this.form.controls).forEach((key) => {
+      this.form.get(key).setErrors(null);
+    });
   }
 
-  saveProject(project: Project) {
-    if (!project.id) {
-      this.createProject(project);
-    } else {
-      this.updateProject(project);
-    }
-  }
-
-  updateProject(project: Project) {
-    this.notify.notification(`You have updated ${project.title}`);
-    this.projectsFacade.update(project);
-  }
-
-  createProject(project: Project) {
+  createProject(project: Project): void {
     this.projectsFacade.create(project);
   }
 
-  deleteProject(project) {
+  updateProject(project: Project): void {
+    this.projectsFacade.update(project);
+  }
+
+  deleteProject(project: Project): void {
     this.projectsFacade.delete(project);
   }
 
-  private initForm() {
+  saveProject(project: Project): void {
+    project.id ? this.updateProject(project) : this.createProject(project);
+  }
+
+  private initForm(): void {
     this.form = this.formBuilder.group({
       id: null,
       title: ['', Validators.compose([Validators.required])],

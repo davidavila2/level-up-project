@@ -1,10 +1,10 @@
-import { BaseEntity, Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 import { ProjectStatus } from '../project.enum';
 
 @Entity({
   name: 'Project'
 })
-export class Project extends BaseEntity {
+export class Project {
   @PrimaryColumn()
   id: string;
 

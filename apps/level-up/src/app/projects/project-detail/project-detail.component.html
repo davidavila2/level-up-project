@@ -5,7 +5,7 @@
       <mat-card-title>Update {{selectedProject.title}} Project</mat-card-title>
     </ng-template>
   </mat-card-header>
-  <form [formGroup]="form" #formDirective="ngForm" (submit)="saveForm(formDirective)">
+  <form [formGroup]="form" (submit)="saved.emit(form.value)">
     <mat-card-content class="mb-0">
 
       <mat-form-field appearance="outline" class="w-100">

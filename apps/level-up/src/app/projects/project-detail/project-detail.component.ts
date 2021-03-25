@@ -17,12 +17,12 @@ export class ProjectDetailComponent {
     this.selectedProject = Object.assign({}, value)
   }
 
-  @Output() saved = new EventEmitter();
+  @Output() saved = new EventEmitter<Project>();
   @Output() cancelled = new EventEmitter();
 
-
-  saveForm(formDirective: NgForm) {
-    this.saved.emit(this.form.value);
-    formDirective.resetForm();
-  }
+  // Maybe use this?
+  // saveForm(formDirective: NgForm) {
+  //   this.saved.emit(this.form.value);
+  //   formDirective.resetForm();
+  // }
 }

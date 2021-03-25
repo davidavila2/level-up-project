@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { CoreDataModule, Project, EntityService } from '@level-up/core-data';
+import { CoreDataModule, Project, ProjectsService } from '@level-up/core-data';
 import { CoreStateModule } from '@level-up/core-state'
 import { MaterialModule } from '@level-up/material';
 
@@ -39,7 +39,7 @@ import { ProjectItemComponent } from './projects/project-item/project-item.compo
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [
-    { provide: Project, useClass: EntityService }
+    { provide: Project, useClass: ProjectsService }
   ],
   bootstrap: [AppComponent],
 })

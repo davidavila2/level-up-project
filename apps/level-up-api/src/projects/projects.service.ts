@@ -8,16 +8,16 @@ import { v4 as uuidv4 } from 'uuid';
 export class ProjectsService {
   constructor(@InjectRepository(Project) private projects: Repository<Project>) { }
 
-  create(project: Project): Promise<Project> {
-    return this.projects.save((project.id = uuidv4(), project))
-  }
-
   findAll(): Promise<Project[]> {
     return this.projects.find();
   }
 
   findOne(id: string): Promise<Project> {
     return this.projects.findOne(id);
+  }
+
+  create(project: Project): Promise<Project> {
+    return this.projects.save((project.id = uuidv4(), project))
   }
 
   async update(id: string, project: Project): Promise<Project> {

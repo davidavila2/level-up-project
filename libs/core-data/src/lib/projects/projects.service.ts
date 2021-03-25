@@ -1,42 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EntityService } from '../entity.service';
 import { Project } from './project';
-
-const BASE_URL = 'http://localhost:3000/api/';
-
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectsService {
+export class ProjectsService extends EntityService {
   model = 'projects';
 
-  constructor(private httpClient: HttpClient) { }
-
-  getUrl() {
-    return `${BASE_URL}${this.model}`;
+  constructor(httpClient: HttpClient) {
+    super(httpClient);
   }
 
-  getUrlForId(id: string): string {
-    return `${this.getUrl()}/${id}`;
+  loadProject(id: string) {
+    return this.load(Project as any, id)
   }
 
-  load(id: string) {
-    return this.httpClient.get(this.getUrlForId(id))
+  loadAllProjects() {
+    return this.loadAll(Project as any)
   }
 
-  loadAll() {
-    return this.httpClient.get(this.getUrl());
+  createProject(project: Project) {
+    return this.create(Project as any, project);
   }
 
-  create(project: Project) {
-    return this.httpClient.post(this.getUrl(), project);
+  updateProject(project: Project) {
+    return this.update(Project as any, project)
   }
 
-  update(project: Project) {
-    return this.httpClient.patch(this.getUrlForId(project.id), project);
-  }
-
-  delete(id: string) {
-    return this.httpClient.delete(this.getUrlForId(id));
+  deleteProject(id: string) {
+    return this.delete(Project as any, id)
   }
 }

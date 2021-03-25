@@ -4,11 +4,12 @@ import { Entity, Key } from '@briebug/ngrx-auto-entity';
   modelName: 'projects',
   uriName: 'Projects'
 })
+
 export class Project {
   @Key id: string;
   title: string;
   description: string;
-  status = STATUS
+  status: string
 }
 
 export const emptyProject = {

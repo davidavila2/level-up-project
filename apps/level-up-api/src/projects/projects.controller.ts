@@ -6,11 +6,6 @@ import { ProjectsService } from './projects.service';
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) { }
 
-  @Post()
-  create(@Body() project: Project): Promise<Project> {
-    return this.projectsService.create(project);
-  }
-
   @Get()
   findAll(): Promise<Project[]> {
     return this.projectsService.findAll();
@@ -19,6 +14,11 @@ export class ProjectsController {
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Project> {
     return this.projectsService.findOne(id);
+  }
+
+  @Post()
+  create(@Body() project: Project): Promise<Project> {
+    return this.projectsService.create(project);
   }
 
   @Patch(':id')
