@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { of } from 'rxjs';
 
 export class ProjectFacadeStub {

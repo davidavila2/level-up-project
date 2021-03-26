@@ -4,10 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { CoreDataModule, Project, ProjectsService } from '@level-up/core-data';
+import { CoreDataModule, Project, EntityService } from '@level-up/core-data';
 import { CoreStateModule } from '@level-up/core-state'
 import { MaterialModule } from '@level-up/material';
 
@@ -39,7 +38,7 @@ import { ProjectItemComponent } from './projects/project-item/project-item.compo
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [
-    { provide: Project, useClass: ProjectsService }
+    { provide: Project, useClass: EntityService }
   ],
   bootstrap: [AppComponent],
 })
