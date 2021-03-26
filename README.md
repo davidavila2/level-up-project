@@ -4,18 +4,18 @@ Below are our core scripts for starting the applicaion and api:
 
 - First you want to install dependencies
   - `Yarn`
-- [front-end](Angular)
+- [front-end] (Angular)
   - `yarn start`
-- [api](NestJs)
+- [api] (NestJs)
   - `yarn start:api`
 
 ## This Project is unit tested and E2E tested
 
 Below are our core scripts for testing:
 
-- [front-end](Angular)
+- [front-end] (Angular)
   - `yarn test`
-- [api](NestJs)
+- [api] (NestJs)
   - `yarn test:api`
 - [E2E] (Cypress)
   - `yarn e2e`
