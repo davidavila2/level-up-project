@@ -1,21 +1,23 @@
 # Starting the application
 
-<div align="center">
-  <ol>
-    <li>Yarn</li>
-    <li>Yarn start</li>
-  </ol>
-</div>
+Below are our core scripts for starting the applicaion and api:
+
+- First you want to install dependencies
+  - `Yarn`
+- [front-end](Angular)
+  - `yarn start`
+- [api](NestJs)
+  - `yarn start:api`
 
 ## This Project is unit tested and E2E tested
 
-<p align="center">To run unit test the front-end run the command below</p>
+Below are our core scripts for testing:
+
+- [front-end](Angular)
   - `yarn test`
-
-<p align="center">To run unit test the api run the command below</p>
+- [api](NestJs)
   - `yarn test:api`
-
-<p align="center">To run E2E test the api run the command below</p>
+- [E2E] (Cypress)
   - `yarn e2e`
 
 # LevelUp
