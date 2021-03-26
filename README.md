@@ -20,6 +20,15 @@ Below are our core scripts for testing:
 - [E2E] (Cypress)
   - `yarn e2e`
 
+## Tech Stack
+
+- [front-end](Angular)
+- [api](NestJs)
+- [E2E] (Cypress)
+- [Unit-Testing] (Jest)
+- [State-Management] (NGRX Auto Entity)
+- [UI] (Angular Material)
+
 # LevelUp
 
 This project was generated using [Nx](https://nx.dev).
