@@ -1,4 +1,22 @@
+# Starting the application
 
+<div align="center">
+  <ol>
+    <li>Yarn</li>
+    <li>Yarn start</li>
+  </ol>
+</div>
+
+## This Project is unit tested and E2E tested
+
+<p align="center">To run unit test the front-end run the command below</p>
+  - `yarn test`
+
+<p align="center">To run unit test the api run the command below</p>
+  - `yarn test:api`
+
+<p align="center">To run E2E test the api run the command below</p>
+  - `yarn e2e`
 
 # LevelUp
 
@@ -86,11 +104,6 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
 
 ## ☁ Nx Cloud
 
