@@ -22,8 +22,8 @@ Below are our core scripts for testing:
 
 ## Tech Stack
 
-- [front-end](Angular)
-- [api](NestJs)
+- [front-end] (Angular)
+- [api] (NestJs)
 - [E2E] (Cypress)
 - [Unit-Testing] (Jest)
 - [State-Management] (NGRX Auto Entity)
