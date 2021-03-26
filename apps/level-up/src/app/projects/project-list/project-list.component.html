@@ -6,17 +6,18 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let project of projects" (click)="selected.emit(project)">
-        <h3 mat-line>
+      <mat-list-item *ngFor="let project of projects" data-cy="project-item" (click)="selected.emit(project)">
+        <h3 mat-line data-cy="project-title">
           {{project.title}}
         </h3>
-        <p mat-line>
+        <p mat-line data-cy="project-description">
           {{project.description}}
         </p>
-        <button mat-icon-button (click)="deleted.emit(project); $event.stopImmediatePropagation()">
+        <button mat-icon-button data-cy="delete-btn" (click)="deleted.emit(project); $event.stopImmediatePropagation()">
           <mat-icon>delete</mat-icon>
         </button>
-        <button mat-icon-button (click)="$event.stopImmediatePropagation()" routerLink="/project/{{project.id}}">
+        <button mat-icon-button data-cy="route-btn" (click)="$event.stopImmediatePropagation()"
+          routerLink="/project/{{project.id}}">
           <mat-icon>more_vert</mat-icon>
         </button>
       </mat-list-item>

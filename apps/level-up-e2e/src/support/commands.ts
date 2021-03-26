@@ -1,33 +1,35 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-
-// eslint-disable-next-line @typescript-eslint/no-namespace
+/* eslint-disable @typescript-eslint/no-namespace */
 declare namespace Cypress {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  interface Chainable<Subject> {
-    login(email: string, password: string): void;
+  interface Chainable {
+    elementContains(
+      element: Cypress.Chainable<Element>, valueMatcher: RegExp | string
+    ): Cypress.Chainable<Element>;
+    selectorContains(
+      selector: string, valueMatcher: RegExp | string
+    ): Cypress.Chainable<Element>;
+    dataCy(value: string): Cypress.Chainable<Element>;
+    checkLocation(path: string): void;
   }
 }
-//
-// -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => {
-  console.log('Custom command example: Login', email, password);
+
+Cypress.Commands.add(
+  'selectorContains',
+  (selector: string, valueMatcher: RegExp | string) => {
+    cy.get(selector).contains(valueMatcher);
+  }
+);
+
+Cypress.Commands.add(
+  'elementContains',
+  (element: Cypress.Chainable<Element>, valueMatcher: RegExp | string) => {
+    element.contains(valueMatcher);
+  }
+);
+
+Cypress.Commands.add('dataCy', (value) => {
+  return cy.get(`[data-cy=${value}]`);
 });
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('checkLocation', (route) => {
+  cy.location('pathname').should('equal', route);
+});

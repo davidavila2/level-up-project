@@ -2,37 +2,41 @@
   <mat-card-header>
     <mat-card-title *ngIf="!selectedProject.id; else update">Create a Project</mat-card-title>
     <ng-template #update>
-      <mat-card-title>Update {{selectedProject.title}} Project</mat-card-title>
+      <mat-card-title data-cy="update-project-name">Update {{selectedProject.title}} Project</mat-card-title>
     </ng-template>
   </mat-card-header>
   <form [formGroup]="form" (submit)="saved.emit(form.value)">
     <mat-card-content class="mb-0">
-
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Title</mat-label>
-        <input matInput type="text" formControlName="title" />
+        <input data-cy="project-title-input" matInput type="text" formControlName="title" />
+        <mat-error data-cy="project-title-input-error" *ngIf="form.get('title').hasError('required')">Required Field
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Description</mat-label>
-        <textarea matInput type="text" formControlName="description">
+        <textarea data-cy="project-description-textarea" matInput type="text" formControlName="description">
         </textarea>
+        <mat-error data-cy="project-description-textarea-error" *ngIf="form.get('description').hasError('required')">
+          Required Field</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
-        <mat-select formControlName="status" name="status">
-          <mat-option *ngFor="let status of projectStatuses" [value]="status.value">
+        <mat-select data-cy="project-status" formControlName="status" name="status">
+          <mat-option [attr.data-cy]="status.label" *ngFor="let status of projectStatuses" [value]="status.value">
             {{status.label}}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="form.get('status').hasError('required')">Required Field</mat-error>
+        <mat-error data-cy="project-status-error" *ngIf="form.get('status').hasError('required')">Required Field
+        </mat-error>
       </mat-form-field>
 
     </mat-card-content>
     <mat-card-actions class="d-flex flex-row-reverse mb-0">
-      <button mat-button type="submit" color="primary">Submit</button>
-      <button mat-button type="reset" color="warn" (click)="cancelled.emit()">Cancel</button>
+      <button mat-button data-cy="submit-btn" type="submit" color="primary">Submit</button>
+      <button mat-button data-cy="reset-btn" type="reset" color="warn" (click)="cancelled.emit()">Cancel</button>
     </mat-card-actions>
   </form>
 </mat-card>

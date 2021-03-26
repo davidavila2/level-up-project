@@ -1,7 +1,8 @@
 {
   "version": 1,
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
   },
   "defaultProject": "level-up",
   "schematics": {
@@ -51,7 +52,9 @@
               "apps/level-up/src/favicon.ico",
               "apps/level-up/src/assets"
             ],
-            "styles": ["apps/level-up/src/styles.scss"],
+            "styles": [
+              "apps/level-up/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -113,7 +116,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/level-up"],
+          "outputs": [
+            "coverage/apps/level-up"
+          ],
           "options": {
             "jestConfig": "apps/level-up/jest.config.js",
             "passWithNoTests": true
@@ -142,7 +147,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/level-up-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/level-up-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -155,12 +162,16 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/level-up-api",
             "main": "apps/level-up-api/src/main.ts",
             "tsConfig": "apps/level-up-api/tsconfig.app.json",
-            "assets": ["apps/level-up-api/src/assets"]
+            "assets": [
+              "apps/level-up-api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -185,12 +196,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/level-up-api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/level-up-api/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/level-up-api"],
+          "outputs": [
+            "coverage/apps/level-up-api"
+          ],
           "options": {
             "jestConfig": "apps/level-up-api/jest.config.js",
             "passWithNoTests": true
@@ -215,7 +230,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/core-data"],
+          "outputs": [
+            "coverage/libs/core-data"
+          ],
           "options": {
             "jestConfig": "libs/core-data/jest.config.js",
             "passWithNoTests": true
@@ -240,7 +257,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/material"],
+          "outputs": [
+            "coverage/libs/material"
+          ],
           "options": {
             "jestConfig": "libs/material/jest.config.js",
             "passWithNoTests": true
@@ -265,7 +284,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/core-state"],
+          "outputs": [
+            "coverage/libs/core-state"
+          ],
           "options": {
             "jestConfig": "libs/core-state/jest.config.js",
             "passWithNoTests": true
