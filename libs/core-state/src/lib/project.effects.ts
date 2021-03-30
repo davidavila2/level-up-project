@@ -22,7 +22,7 @@ export class ProjectsEffects {
 
   notifyDeleteSuccess$ = createEffect(() => this.actions$.pipe(
     ofType(deleteProjectSuccess),
-    tap(() => this.notify.notification('You have Delete a Project'))
+    tap(() => this.notify.notification('You have deleted a Project'))
   ),
     { dispatch: false }
   )
