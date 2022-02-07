@@ -14,7 +14,7 @@ import { Project } from '../projects/entities/project.entity';
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'davidavila',
+      database: 'postgres',
       entities: [Project],
       autoLoadEntities: true,
       synchronize: false,
